@@ -10,4 +10,5 @@ urlpatterns = [
 
     path('functions', views.functions, name='functions'),
     path('manual', views.manual, name='manual'),
+    path('system', views.system, name='system'),
 ]

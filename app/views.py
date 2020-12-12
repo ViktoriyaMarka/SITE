@@ -11,7 +11,9 @@ from django.contrib import messages
 # Create your views here.
 
 def index(request):
-    return render(request, 'app/index.html')
+    files = File.objects.all().order_by
+    context = {'files': files}
+    return render(request, 'app/index.html', context)
 
 def registerPage(request):
     if request.user.is_authenticated:
@@ -64,3 +66,10 @@ def manual(request):
     elements = Manual.objects.all()
     context = {'elements':elements}
     return render(request, 'app/manual.html', context)
+
+@login_required(login_url='login')
+def system(request):
+    system_app = System_App.objects.all()
+    system_prog = System_Prog.objects.all()
+    context = {'system_app':system_app,'system_prog':system_prog }
+    return render(request, 'app/system.html', context)

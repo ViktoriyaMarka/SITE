@@ -9,7 +9,9 @@
                 <strong>Установите программной продукт</strong>
                 <p class="lead text-muted">НО перед началом работы с ПО ознакомьтесь с его функциями и с инструкцией по установке</p>
                 <p>
-                    <a href="#" class="btn btn-primary my-2">Скачать</a>
+                {% for f in files %}
+                    <a href="{{f.file_prog.url }}" class="btn btn-primary my-2">Скачать</a>
+                {% endfor %}
                 </p>
                 {% else %}
                 <strong>Пройдите аутентификацию </br> чтобы скачать ПО</strong>
@@ -68,7 +70,7 @@
                             <div class="d-flex justify-content-between align-items-center">
                                 {% if request.user.is_authenticated %}
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Подробнее</button>
+                                    <a class="btn btn-sm btn-outline-secondary" href="{% url 'system' %}">Подробнее</a>
                                 </div>
                                 <small class="text-muted">Доступно к чтению</small> {% else %}
                                 <small class="text-muted">Не доступно к чтению</small> {% endif %}

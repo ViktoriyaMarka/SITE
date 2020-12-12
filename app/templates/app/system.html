@@ -1,0 +1,79 @@
+{% extends 'app/base.html' %} {% block title %}Системные требования{% endblock %} {% block content %}
+
+<style>
+    .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+    }
+    
+    @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+            font-size: 3.5rem;
+        }
+    }
+    
+    input {
+        margin: 0 auto;
+    }
+    
+    .form {
+        max-width: 40%;
+        margin: 0 auto;
+        padding: 30px;
+        box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.25);
+    }
+</style>
+
+
+<!-- Custom styles for this template -->
+<link href="signin.css" rel="stylesheet">
+</head>
+
+<div class="text-center">
+
+    <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-light">Системные требования</h1>
+                <strong>Ознакомьтесь с системные требованиями ПО перед его установкой</strong>
+                <p style="color: rgb(148, 148, 148); font-size: 12px;">Если у вас возникнет вопрос, задайте его администратору</p>
+            </div>
+        </div>
+    </section>
+
+    <main class="form-signin">
+        <div class=" mb-5 form">
+            {% csrf_token %}
+            <h1 class="h3 mb-3 fw-normal">Минимальные аппаратные требования</h1>
+            {% for app in system_app %}
+                <p><strong >{{app.name}}</strong></p>
+                <p>CPU: {{app.CPU}}</p>
+                <p>RAM: {{app.RAM}}</p>
+                <p>HDD/SSD: {{app.HDD_SSD}}</p>
+                {% if app.Video %}
+                    <p>Видеоадаптер: {{app.Video}}</p>
+                {% endif %}
+                <p>Сетевая карта: {{app.NetworkCard}}</p>
+                {% if app.Manipulators %}
+                    <p>Манипуляторы: {{app.Manipulators}}</p>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </main>
+
+    <main class="form-signin">
+        <div class="form">
+            {% csrf_token %}
+            <h1 class="h3 mb-3 fw-normal">Минимальные программные требования</h1>
+            {% for prog in system_prog %}
+                <p><strong>{{prog.name}}</strong></p>
+                <p>Операционная система: {{prog.OS}}</p>
+                <p>Дополнительное ПО: {{prog.DOP}}</p>
+            {% endfor %}
+        </div>
+    </main>
+</div>
+{% endblock %}
