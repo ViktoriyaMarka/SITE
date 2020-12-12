@@ -5,3 +5,5 @@ from .models import *
 
 admin.site.register(Function)
 admin.site.register(Manual)
+admin.site.register(System_App)
+admin.site.register(System_Prog)
