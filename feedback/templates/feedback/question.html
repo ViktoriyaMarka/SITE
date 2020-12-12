@@ -1,0 +1,59 @@
+{% extends 'app/base.html' %} {% block title %}Ошибка{% endblock %} {% block content %}
+
+<style>
+    .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+    }
+    
+    @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+            font-size: 3.5rem;
+        }
+    }
+    
+    form {
+        width: 50%;
+        margin: 0 auto;
+        padding: 30px;
+        box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.25);
+    }
+    
+    .center {
+        margin: 0 auto;
+    }
+</style>
+
+
+<!-- Custom styles for this template -->
+<link href="signin.css" rel="stylesheet">
+</head>
+
+<div class="text-center">
+    <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-light">Вы хотите задать вопрос?</h1>
+                <strong>Опишите возникший вопрос</strong>
+                <p style="color: rgb(148, 148, 148); font-size: 12px;">Письмо получит администратор и через некоторое время свяжется с вами</p>
+            </div>
+        </div>
+    </section>
+
+
+    <main class="form-signin">
+        <form method="POST" action="">
+            {% csrf_token %}
+            <h1 class="center h3 mb-1 fw-normal">Вопрос</h1>
+            {{form.email}}
+            {{form.name}}
+            <textarea name="disciption" maxlength="500" class="center w-50 mt-3 form-control" placeholder="Описание вопроса" required></textarea> 
+            {{form.image}}
+            <button class="center w-50 mt-4 btn btn-lg btn-primary" type="submit"><strong>Спросить</strong></button>
+        </form>
+    </main>
+</div>
+{% endblock %}

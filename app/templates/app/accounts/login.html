@@ -1,0 +1,58 @@
+{% extends 'app/base.html' %} 
+
+{% block title %}Авторизация{% endblock %} 
+
+
+{% block content %}
+
+<style>
+    .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+    }
+    
+    @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+            font-size: 3.5rem;
+        }
+    }
+    
+    input {
+        margin: 0 auto;
+    }
+    
+    form {
+        max-width: 40%;
+        margin: 100px auto;
+        padding: 30px;
+        box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.25);
+    }
+</style>
+
+
+<!-- Custom styles for this template -->
+<link href="signin.css" rel="stylesheet">
+</head>
+
+<body class="text-center">
+
+    <main class="form-signin">
+        <form method="POST" action="">
+            {% csrf_token %} 
+            <h1 class="h3 mb-3 fw-normal">Авторизация</h1>
+            <input type="text" name="username" class=" w-50 mt-5 form-control" placeholder="Имя пользователя" required autofocus>
+            <label for="inputPassword" class="visually-hidden">Password</label>
+            <input type="password" name="password" class="w-50 mt-3 form-control" placeholder="Пароль" required>
+            <button class="w-50 mt-4 btn btn-lg btn-primary" type="submit"><strong>Войти</strong></button>
+            <p class="mt-2 text-muted"><a href="{% url 'register' %}">Зарегистрироваться!</a> </p>
+
+            {% for message in messages %}
+                <p id="messages" class="mt-2 mb-3 text-muted">{{message}}</p>
+            {% endfor%}
+            <p class="mt-5 mb-3 text-muted">&copy; Все права защищены</p>
+        </form>
+    </main>
+    {% endblock %}

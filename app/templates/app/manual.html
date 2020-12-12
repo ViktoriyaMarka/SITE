@@ -1,0 +1,53 @@
+{% extends 'app/base.html' %} 
+
+{% block title %}Интсрукция по устанвоке ПО{% endblock %} 
+
+{% block content %}
+
+
+    <style>
+        .card{
+            padding: 20px;
+        }
+
+        img {
+            padding-top: 20px;
+            object-fit: contain;
+        }
+        
+    </style>
+
+<main>
+
+    <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-light">Инструкция по установке ПО</h1>
+                <strong>Ознакомьтесь с инструкцией ПО перед его установкой</strong>
+                <p style="color: rgb(148, 148, 148); font-size: 12px;">Если у вас возникнет вопрос, задайте его администратору</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="album py-5 bg-light">
+    {% for el in elements %}
+        <div class="mb-5  container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="w-100">
+                    <div class="card shadow-sm">
+                            <strong class="card-text">{{ el.name }}</strong>
+                        <img width="100%" height="400px" src="{{ el.image.url }}" alt="Изображение">
+                        <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
+                        <div class="card-body">
+                            <p class="card-text">{{ el.disciption }}</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+
+</main>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'app/base.html' %} 
+
+{% block title %}Регистрация{% endblock %} 
+
+{% block content %}
+
+<style>
+    .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+    }
+    
+    @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+            font-size: 3.5rem;
+        }
+    }
+    
+    input {
+        margin: 0 auto;
+    }
+    
+    form {
+        width: 50%;
+        margin: 80px auto;
+        padding: 30px;
+        box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.25);
+    }
+</style>
+
+
+<!-- Custom styles for this template -->
+<link href="signin.css" rel="stylesheet">
+</head>
+
+<body class="text-center">
+
+    <main class="form-signin">
+        <form method="POST" action="">
+            {% csrf_token %} 
+            <h1 class="h3 mb-3 fw-normal">Регистрация</h1>
+            <label for="inputEmail" class="visually-hidden">Username</label>
+            <input type="text" name="username" id="inputEmail" class=" w-50 mt-5 form-control" placeholder="Логин" required autofocus>
+
+            <input type="email" name="email" maxlength="254" class="w-50 mt-3 form-control" placeholder="Email" required>
+            <input type="text" name="first_name" maxlength="150" class="w-50 mt-3 form-control" placeholder="Имя пользователя" required>
+            <input type="text" name="last_name" maxlength="150" class="w-50 mt-3 form-control" placeholder="Фамилия пользователя" required>
+            
+            <label for="inputPassword" class="visually-hidden">Password</label>
+            <input type="password" name="password1" id="inputPassword" class="w-50 mt-3 form-control" placeholder="Пароль" required>
+            
+            <label for="inputPassword" class="visually-hidden">Password</label>
+            <input type="password" name="password2" id="inputPassword" class="w-50 mt-3 form-control" placeholder="Повторите пароль" required>
+            <button class="w-50 mt-4 btn btn-lg btn-primary" type="submit"><strong>Регистрация</strong></button>
+            <p class="mt-2 text-muted"><a href="{% url 'login' %}">Авторизация</a> </p>
+            <p class="mt-5 mb-3 text-muted">&copy; Все права защищены</p>
+        </form>
+    </main>
+    {% endblock %}

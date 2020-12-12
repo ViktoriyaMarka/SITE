@@ -1,0 +1,85 @@
+{% extends 'app/base.html' %} {% block title %}Медицинский центр{% endblock %} {% block content %}
+<main>
+
+    <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-light">ИС Медицинский центр</h1>
+                {% if request.user.is_authenticated %}
+                <strong>Установите программной продукт</strong>
+                <p class="lead text-muted">НО перед началом работы с ПО ознакомьтесь с его функциями и с инструкцией по установке</p>
+                <p>
+                    <a href="#" class="btn btn-primary my-2">Скачать</a>
+                </p>
+                {% else %}
+                <strong>Пройдите аутентификацию </br> чтобы скачать ПО</strong>
+                <p class="mt-2 text-muted">
+                    <a href="{% url 'login' %}">Авторизация</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="{% url 'register' %}">Регистрация</a></p>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Функции</text></svg>
+
+                        <div class="card-body">
+                            <p class="card-text">Функции программного продукта</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                {% if request.user.is_authenticated %}
+                                <div class="btn-group">
+                                    <a class="btn btn-sm btn-outline-secondary" href="{% url 'functions' %}">Подробнее</a>
+                                </div>
+                                <small class="text-muted">Доступно к чтению</small> {% else %}
+                                <small class="text-muted">Не доступно к чтению</small> {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Инструкции</text></svg>
+
+                        <div class="card-body">
+                            <p class="card-text">Инструкция по загрузке программного продукта</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                {% if request.user.is_authenticated %}
+                                <div class="btn-group">
+                                    <a class="btn btn-sm btn-outline-secondary" href="{% url 'manual' %}">Подробнее</a>
+                                </div>
+                                <small class="text-muted">Доступно к чтению</small> {% else %}
+                                <small class="text-muted">Не доступно к чтению</small> {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Системные требования</text></svg>
+
+                        <div class="card-body">
+                            <p class="card-text">Системные требования</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                {% if request.user.is_authenticated %}
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Подробнее</button>
+                                </div>
+                                <small class="text-muted">Доступно к чтению</small> {% else %}
+                                <small class="text-muted">Не доступно к чтению</small> {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</main>
+{% endblock %}
