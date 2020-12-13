@@ -11,7 +11,7 @@ from django.contrib import messages
 # Create your views here.
 
 def index(request):
-    files = File.objects.all().order_by
+    files = File.objects.latest()
     context = {'files': files}
     return render(request, 'app/index.html', context)
 

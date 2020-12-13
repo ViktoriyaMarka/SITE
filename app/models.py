@@ -29,7 +29,7 @@ class Manual(models.Model):
         return self.name
 
 class System_App(models.Model):
-    name                  = models.CharField(max_length=50, verbose_name='Наименование требований')
+    name                  = models.CharField(max_length=100, verbose_name='Наименование требований')
     CPU                   = models.CharField(max_length=50, verbose_name='CPU')
     RAM                   = models.CharField(max_length=50, verbose_name='RAM')
     HDD_SSD               = models.CharField(max_length=50, verbose_name='HDD_SSD')
@@ -46,7 +46,7 @@ class System_App(models.Model):
         return self.name
 
 class System_Prog(models.Model):
-    name                  = models.CharField(max_length=50, verbose_name='Наименование требований')
+    name                  = models.CharField(max_length=100, verbose_name='Наименование требований')
     OS                    = models.CharField(max_length=50, verbose_name='OS')
     DOP                   = models.CharField(max_length=50, verbose_name='Дополнительное ПО или СУБД')
 
@@ -61,9 +61,10 @@ class System_Prog(models.Model):
 class File(models.Model):
     name                  = models.CharField(max_length=50, verbose_name='Версия программы')
     file_prog             = models.FileField(_("Установщик программы"), upload_to=None, max_length=100)
-
+    date                  = models.DateTimeField(max_length=50, verbose_name='Дата добавления', null=True, auto_now_add=True)
     
     class Meta:
+        get_latest_by           = "date"
         verbose_name            = "Программа"
         verbose_name_plural     = "Версии программы"
 
