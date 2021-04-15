@@ -126,11 +126,11 @@ LOGIN_REDIRECT_URL = '/'
 import os
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST_USER = 'edx860@gmail.com'
+EMAIL_HOST_USER = 'example'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_PASSWORD = 'XexeylhbrNb[jy/10012'
+EMAIL_HOST_PASSWORD = 'example'
 
-MEDIA_URL = 'D:/МПТ/4 курс/СИПООН/SITE/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'D:/МПТ/4 курс/СИПООН/SITE/media/')
+MEDIA_URL = 'D:/СИПООН/SITE/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'D:/СИПООН/SITE/media/')
